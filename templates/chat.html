@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>우리 아이만을 위한 맞춤상담 ai-bo</title>
+    <!-- Material Symbols Outlined -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='chatstyle.css') }}"
+    />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header class="chat-header">
+      <div class="header-title">
+        <span class="logo-title">ai-bo 챗봇 상담</span>
+      </div>
+    </header>
+
+    <!-- 채팅 메시지 영역 -->
+    <main>
+      <div id="chat-container" class="chat-container"></div>
+    </main>
+
+    <!-- 입력 영역: 마이크 + 텍스트 + 전송 -->
+    <form id="chat-form" class="chat-input-area" autocomplete="off">
+      <button
+        id="mic-btn"
+        class="input-icon"
+        type="button"
+        aria-label="음성입력"
+      >
+        <span class="material-symbols-outlined">mic</span>
+      </button>
+      <input
+        type="text"
+        id="user-input"
+        placeholder="질문을 입력하세요"
+        autocomplete="off"
+      />
+      <button id="send-btn" class="input-icon" type="submit" aria-label="전송">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </form>
+
+    <!-- 우측 FAQ 토글 버튼 (→ 아이콘) -->
+    <button
+      id="faq-toggle"
+      class="faq-toggle"
+      type="button"
+      aria-label="자주 묻는 질문 열기"
+    >
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+
+    <!-- FAQ 패널 (절대 제거 안 함) -->
+    <aside id="faq-panel" class="faq-panel">
+      <h2>자주 묻는 질문</h2>
+      <ul>
+        <li>해지 환급금이 뭐예요?</li>
+        <li>아이 치료비가 나왔어요. 청구하려면 어떻게 하나요?</li>
+        <li>보험 보장 범위를 확인하고 싶어요</li>
+        <li>입원했는데 보험금 받을 수 있나요?</li>
+        <li>수술비 청구하려면 어떤 서류가 필요하죠?</li>
+      </ul>
+    </aside>
+
+    <!-- 하단 점3개 메뉴 -->
+    <div class="floating-menu">
+      <button id="menu-btn" class="menu-btn" aria-label="메뉴 열기">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </button>
+      <div id="menu-panel" class="menu-panel">
+        <ul>
+          <li id="menu-home">
+            <span class="material-symbols-outlined">home</span>
+            Home
+          </li>
+          <li id="menu-history">
+            <span class="material-symbols-outlined">history</span>
+            History
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <!-- 마크다운 파서/챗봇 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../static/chat.js"></script>
+  </body>
+</html>

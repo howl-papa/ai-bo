@@ -1,0 +1,176 @@
+/* 사용자별 맞춤형 추천 시스템 스타일 */
+.recommendation-system {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  background: var(--card-bg-color);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-system::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-secondary);
+}
+
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.recommendation-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.recommendation-header p {
+  color: var(--light-text-color);
+  font-size: 15px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.recommendation-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  color: var(--light-text-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(103, 126, 234, 0.4);
+}
+
+/* 추천 배지 스타일 */
+.recommendation-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+.recommendation-badge:not(.new):not(.trending):not(.recommended) {
+  background: var(--gradient-secondary);
+}
+
+.recommendation-badge.new {
+  background: var(--gradient-accent);
+}
+
+.recommendation-badge.trending {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.recommendation-badge.recommended {
+  background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+}
+
+/* 매칭도 스코어 스타일 */
+.match-score {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: rgba(103, 126, 234, 0.1);
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: center;
+  border: 1px solid rgba(103, 126, 234, 0.2);
+}
+
+/* 필터링 애니메이션 */
+.partner-card[data-category] {
+  transition: all 0.5s ease;
+}
+
+.partner-card.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .recommendation-system {
+    margin: 0 20px 40px;
+    padding: 20px;
+  }
+  
+  .recommendation-header h3 {
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+  
+  .recommendation-filters {
+    gap: 8px;
+  }
+  
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .recommendation-badge {
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,7 @@
+flask
+gunicorn
+flask_cors
+openai
+requests
+python-dotenv
+# ...기타 사용하는 모든 패키지

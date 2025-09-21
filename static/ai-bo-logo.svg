@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <!-- 배경 그라디언트 정의 -->
+  <defs>
+    <!-- 로봇 몸체 그라디언트 -->
+    <linearGradient id="robotGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4FACFE"/>
+      <stop offset="100%" style="stop-color:#00F2FE"/>
+    </linearGradient>
+    
+    <!-- 로봇 머리 그라디언트 -->
+    <linearGradient id="headGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#667EEA"/>
+      <stop offset="100%" style="stop-color:#764BA2"/>
+    </linearGradient>
+    
+    <!-- 안테나 그라디언트 -->
+    <linearGradient id="antennaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F093FB"/>
+      <stop offset="100%" style="stop-color:#F5576C"/>
+    </linearGradient>
+    
+    <!-- 텍스트 그라디언트 (더 진한 색상) -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1A365D"/>
+      <stop offset="50%" style="stop-color:#0F4068"/>
+      <stop offset="100%" style="stop-color:#1A365D"/>
+    </linearGradient>
+    
+    <!-- 그림자 필터 -->
+    <filter id="dropShadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- 눈 반짝임 -->
+    <radialGradient id="eyeGradient" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="70%" style="stop-color:#4FACFE" stop-opacity="0.6"/>
+      <stop offset="100%" style="stop-color:#00F2FE"/>
+    </radialGradient>
+    
+    <!-- 방패 그라디언트 -->
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A365D"/>
+      <stop offset="100%" style="stop-color:#2B77E4"/>
+    </linearGradient>
+    
+    <!-- 방패 테두리 그라디언트 -->
+    <linearGradient id="shieldBorderGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F093FB"/>
+      <stop offset="100%" style="stop-color:#F5576C"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 로봇 캐릭터 -->
+  <g transform="translate(20, 15)" filter="url(#dropShadow)">
+    
+    <!-- 안테나 -->
+    <line x1="45" y1="10" x2="45" y2="2" stroke="url(#antennaGradient)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="45" cy="2" r="3" fill="url(#antennaGradient)"/>
+    
+    <!-- 로봇 머리 (둥근 사각형) -->
+    <rect x="25" y="10" width="40" height="35" rx="18" ry="18" fill="url(#headGradient)"/>
+    
+    <!-- 눈 -->
+    <circle cx="35" cy="25" r="6" fill="url(#eyeGradient)"/>
+    <circle cx="55" cy="25" r="6" fill="url(#eyeGradient)"/>
+    
+    <!-- 눈 하이라이트 -->
+    <circle cx="37" cy="23" r="2" fill="#FFFFFF" opacity="0.9"/>
+    <circle cx="57" cy="23" r="2" fill="#FFFFFF" opacity="0.9"/>
+    
+    <!-- 입 (미소) -->
+    <path d="M 35 35 Q 45 42 55 35" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    
+    <!-- 로봇 몸체 -->
+    <rect x="30" y="45" width="30" height="35" rx="15" ry="15" fill="url(#robotGradient)"/>
+    
+    <!-- 양손으로 방패를 들고 있는 모습 -->
+    <!-- 팔 (방패를 들 수 있도록 조정) -->
+    <rect x="20" y="50" width="12" height="18" rx="6" ry="6" fill="url(#robotGradient)" opacity="0.8"/>
+    <rect x="58" y="50" width="12" height="18" rx="6" ry="6" fill="url(#robotGradient)" opacity="0.8"/>
+    
+    <!-- 손 -->
+    <circle cx="26" cy="73" r="5" fill="url(#robotGradient)"/>
+    <circle cx="64" cy="73" r="5" fill="url(#robotGradient)"/>
+    
+    <!-- 큰 방패 (로봇이 양손으로 들고 있는 모습) -->
+    <g transform="translate(35, 65)">
+      <!-- 메인 방패 모양 -->
+      <path d="M 0 0 L 20 0 Q 22 0 22 3 L 22 20 C 22 28, 11 32, 11 32 C 11 32, 0 28, 0 20 L 0 3 Q 0 0 0 0 Z" 
+            fill="url(#shieldGradient)" stroke="url(#shieldBorderGradient)" stroke-width="1.5" opacity="0.95"/>
+      <!-- 체크 마크 (보호 상징) -->
+      <path d="M 6 15 L 10 19 L 16 11" stroke="#FFFFFF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- 방패 중앙 하이라이트 -->
+      <ellipse cx="11" cy="12" rx="3" ry="8" fill="#FFFFFF" opacity="0.1"/>
+    </g>
+    
+    <!-- 보험 서류 (방패 옆에) -->
+    <g transform="translate(58, 55) rotate(-10)">
+      <rect x="0" y="0" width="8" height="10" rx="1" ry="1" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.5"/>
+      <line x1="1.5" y1="2.5" x2="6.5" y2="2.5" stroke="#E2E8F0" stroke-width="0.5"/>
+      <line x1="1.5" y1="4" x2="6.5" y2="4" stroke="#E2E8F0" stroke-width="0.5"/>
+      <line x1="1.5" y1="5.5" x2="5" y2="5.5" stroke="#E2E8F0" stroke-width="0.5"/>
+      <circle cx="6" cy="7.5" r="0.8" fill="#4FACFE"/>
+    </g>
+    
+    <!-- 왼쪽에 돋보기 -->
+    <g transform="translate(17, 58) rotate(10)">
+      <circle cx="3" cy="2" r="2.5" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+      <line x1="1.2" y1="3.8" x2="-1" y2="6" stroke="#FFFFFF" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- 브랜드 텍스트 -->
+  <g transform="translate(110, 30)">
+    
+    <!-- 메인 로고 텍스트 Ai-bo (더 진한 색상) -->
+    <text x="0" y="35" font-family="'Pretendard', 'Noto Sans KR', sans-serif" 
+          font-size="32" font-weight="800" fill="url(#textGradient)" letter-spacing="-1px">
+      Ai-bo
+    </text>
+    
+    <!-- 서브 텍스트 (더 진한 색상) -->
+    <text x="2" y="55" font-family="'Pretendard', 'Noto Sans KR', sans-serif" 
+          font-size="12" font-weight="600" fill="#2D3748" opacity="0.9">
+      보험 상담 챗봇
+    </text>
+    
+    <!-- 우측 장식 방패 아이콘 -->
+    <g transform="translate(110, 15) scale(1.2)">
+      <!-- 메인 방패 모양 -->
+      <path d="M 0 0 L 12 0 Q 12 0 12 2 L 12 12 C 12 17, 6 20, 6 20 C 6 20, 0 17, 0 12 L 0 2 Q 0 0 0 0 Z" 
+            fill="url(#shieldGradient)" stroke="url(#shieldBorderGradient)" stroke-width="0.8" opacity="0.95"/>
+      <!-- 체크 마크 (보호 상징) -->
+      <path d="M 3 9 L 5.5 11.5 L 9 7" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </g>
+    
+  </g>
+  
+  <!-- 장식 요소 -->
+  <g>
+    <!-- 우측 상단 장식 - 대화 말풍선 (상담 서비스 상징) -->
+    <g transform="translate(270, 25)">
+      <path d="M 0 0 L 18 0 Q 22 0 22 4 L 22 12 Q 22 16 18 16 L 4 16 L 0 20 L 0 16 L 0 4 Q 0 0 4 0 Z" 
+            fill="#F8FAFC" stroke="url(#robotGradient)" stroke-width="0.8" opacity="0.9"/>
+      <circle cx="7" cy="8" r="1.2" fill="#4FACFE"/>
+      <circle cx="11" cy="8" r="1.2" fill="#4FACFE"/>
+      <circle cx="15" cy="8" r="1.2" fill="#4FACFE"/>
+    </g>
+    
+    <!-- 추가 장식 점들 -->
+    <circle cx="280" cy="55" r="2" fill="#F093FB" opacity="0.6"/>
+    <circle cx="285" cy="65" r="1.5" fill="#4FACFE" opacity="0.5"/>
+    <circle cx="275" cy="75" r="1" fill="#667EEA" opacity="0.4"/>
+  </g>
+  
+  <!-- 원형 표시 (보험 완성도와 서비스 연속성 상징) -->
+  <circle cx="15" cy="105" r="3" fill="url(#antennaGradient)" opacity="0.8" filter="url(#dropShadow)"/>
+  <circle cx="30" cy="105" r="3" fill="url(#robotGradient)" opacity="0.8" filter="url(#dropShadow)"/>
+  <circle cx="45" cy="105" r="3" fill="url(#headGradient)" opacity="0.8" filter="url(#dropShadow)"/>
+  
+</svg>

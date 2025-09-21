@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>우리 아이만을 위한 맞춤상담 ai-bo</title>
+    <!-- 주요 스타일 시트 -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home(ver4).css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='recommendation-styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <!-- 안내 팝업 오버레이 -->
+    <div id="guideOverlay" class="overlay">
+      <div class="modal">
+        <h2>서비스 이용 약관 및 개인정보 이용 안내</h2>
+        <p>
+          본 AI 챗봇은 실제 상담원을 대체하지 않습니다.<br />
+          모든 질문과 답변은 학습 목적으로 기록되며,<br />
+          <strong
+            >주민등록번호, 계좌번호 등 민감한 개인정보는 절대 입력하지
+            마세요.</strong
+          >
+        </p>
+        <p>
+          이 서비스는 정보 제공을 목적으로 하며,<br />
+          <strong>법적·재정적 판단에 대한 책임은 사용자에게 있습니다.</strong
+          ><br />
+          수집된 데이터는 개인 식별이 불가능한 형태로 안전하게 관리되며,<br />
+          개인정보 처리방침에 따라 보호됩니다.
+        </p>
+        <p>
+          본 AI 챗봇은 실제 보험 상담사 또는 설계사를 대체하지 않으며,
+          <br />보험 관련 정보는 일반적인 이해를 돕기 위한 참고용입니다.<br />
+        </p>
+        <p>
+          안내되는 보장 범위, 청구 가능 여부 등은 실제 약관 및 가입 내역과
+          상이할 수 있으며,<br />
+          <strong
+            >반드시 보험사 고객센터 또는 담당자를 통해 확인하시기
+            바랍니다.</strong
+          ><br />
+        </p>
+        <p>
+          챗봇은 표준 약관 기반으로 설계되어 있어, 특약 구성, 납입 조건, 심사
+          결과 등 개별 사례는 반영하지 않습니다.<br />
+          입력한 정보는 비식별화되어 처리되며,<br />
+          <strong
+            >민감한 개인정보 입력 시 발생하는 책임은 사용자에게
+            있습니다.</strong
+          >
+        </p>
+        <div class="modal-buttons">
+          <button id="btnDisagree" class="btn-disagree">비동의</button>
+          <button id="btnAgree" class="btn-agree">동의</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-banner">
+      <p>
+        이 AI는 약관 내용만을 근거로 답변을 생성합니다. 더 상세한 내용은
+        <strong>해당 보험사</strong>의
+        <strong>상담을 통해 확인 바랍니다.</strong>
+      </p>
+    </div>
+
+    <header class="main-header">
+      <div class="container">
+        <img
+          src="{{ url_for('static', filename='ai-bo-logo-new.svg') }}"
+          alt="Ai-bo 보험 상담 챗봇"
+          class="logo"
+        />
+        <span class="material-symbols-outlined menu-icon">menu</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <img
+          src="{{ url_for('static', filename='ai-bo-logo-new.svg') }}"
+          alt="Ai-bo 보험 상담 챗봇"
+          class="logo"
+        />
+        <h3 class="tagline">우리 아이만을 위한 맞춤상담 ai-bo</h3>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="궁금한 보험 용어를 입력하세요"
+          />
+          <button class="search-button">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+        <div class="suggestion-buttons">
+          <button>보험 용어 설명</button>
+          <button>보장 범위 확인</button>
+          <button>보험금 청구 절차</button>
+        </div>
+        <div class="explore-more" id="explore-faq">
+          <span>자주 묻는 질문 F&A</span><span class="material-symbols-outlined">expand_more</span>
+        </div>
+        <section class="faq-section" id="faq-section">
+          <ul>
+            <li><a>태권도 학원에서 대련 중 치아가 깨졌습니다. 보상이 어떻게 되나요?</a></li>
+            <li><a>어린이보험에서 보장하지 않는 질병은 무엇인가요?</a></li>
+            <li><a>자전거 타다가 넘어져서 팔이 골절됐어요. 어떤 서류가 필요한가요?</a></li>
+          </ul>
+        </section>
+      </section>
+
+
+      <!-- Trusted by Section (밑 배너) -->
+      <section class="trusted-by-section">
+        <div class="container">
+          <h3 class="section-title">대한민국 주요 어린이 보험사 약관 학습</h3>
+          <div class="logo-grid">
+            <!-- 실제 로고 URL 적용 -->
+            <img
+              src="https://i.namu.wiki/i/JUWSeDfFDZKyjwc5NUugtfQhbCyzU79piXK_yLGHOqO4NaQp0LIJeLsMEO9x8pVrEhiTpPK7fPWWpmK8X5LQXmft7_goGSJ9vBc-YuABDCns-Xz554dUziSfdWSyqM3WVJvntrgYzPA29-G1dWxW8Q.svg"
+              alt="현대해상"
+            />
+            <img
+              src="https://i.namu.wiki/i/X9LOiYuf3JIWEFvradmyUZuLOOjAdpfH0Kfvu0ZYttF2QQpWZ5fdXI06Ruvd-tpRxPZFilHR_FYqWvi9gXOZxHqobpyy44BuWlNdIzSvRo7qP21mmSwy5BlngxiRwYJ4QslXWD67j5YZ40cqRIRrjg.svg"
+              alt="흥국생명"
+            />
+            <img
+              src="https://i.namu.wiki/i/RarOrvQXvSsKqnT9VJwWJC18XRnMzgvbfjEPR-G6VI0SAhjFFVAHR3fIWbY-hDU2nCLN-jPkRNJzq40W2QzGaIHuU5KAHhlWX3KrSa8AKfT1ixlvQ0E_a0N-gdoSOwdevePB0M7cYyxceEynpfj4XA.svg"
+              alt="한화생명"
+            />
+            <img
+              src="https://i.namu.wiki/i/1TcLJ0CX0M-j_fMkGuZOSHGSknde3jow__OOaUeQqCE2BUkuvOnsJqe0bz66Vgua9wCvH68NfPcHqIV-YxV03f01URwiXPAiL_FiDJBXV7Q7BVdXklbkIATbLcs9Cvk_AmtKALHJ3plduuLBCNtTzw.svg"
+              alt="ABL생명"
+            />
+            <img
+              src="https://i.namu.wiki/i/VvBNhAkmx5o-c4Nz3RsT0PQt1wr1OU_KWskqU7ddA1E8C2gZpElR5KwIEFFy9sdR7NTbXvqxh2w9qbEwRhpenFdynqEeNixbHzrVuxw0GiIfpUtqxAomNDNiFkFS5jZFPVUBFDCDL0pjdazGPn8Bmg.svg"
+              alt="삼성화재"
+            />
+            <!-- 복제 로고로 연속 스크롤 효과 -->
+            <img
+              src="https://i.namu.wiki/i/JUWSeDfFDZKyjwc5NUugtfQhbCyzU79piXK_yLGHOqO4NaQp0LIJeLsMEO9x8pVrEhiTpPK7fPWWpmK8X5LQXmft7_goGSJ9vBc-YuABDCns-Xz554dUziSfdWSyqM3WVJvntrgYzPA29-G1dWxW8Q.svg"
+              alt="현대해상"
+            />
+            <img
+              src="https://i.namu.wiki/i/X9LOiYuf3JIWEFvradmyUZuLOOjAdpfH0Kfvu0ZYttF2QQpWZ5fdXI06Ruvd-tpRxPZFilHR_FYqWvi9gXOZxHqobpyy44BuWlNdIzSvRo7qP21mmSwy5BlngxiRwYJ4QslXWD67j5YZ40cqRIRrjg.svg"
+              alt="흥국생명"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- 학습 데이터셋 & 프로젝트 주관사 푸터 -->
+      <section class="partners-section">
+        <div class="container footer-grid">
+          <div class="footer-col">
+            <h4>학습 데이터셋</h4>
+            <div class="footer-logo-grid">
+              <img
+                src="https://i.namu.wiki/i/JTjwruX1eEeb0Xo9xM3mwCukRahydi2ziar4R1o3IhRox0ZI-M7grolbo3odbws0UgPAW6uicHXZG3aLWXwWLysaq5MDMZwHBGKF3D74pFIlvCD3U4Skb6GWNfscPAayRS4g_CiMCT7HMrs4pGUbgA.svg"
+                alt="국민건강보험공단"
+              />
+              <img src="https://i.namu.wiki/i/QNdLTL57wSXg-s9CDUzOp443qfgjcxv2JvZ_vN4iTjDylTRylUOsaXBHip9-3gLOMNrlgbBS3Suq94k5kps6cN1twT6xHKyNAPtHG3-FHq-KxfAvclRfx12-fgVzky_irR9xEWmtrkvg6oeKuXZbEQ.svg" alt="대한민국법원" />
+              <img src="https://i.namu.wiki/i/iCSMskndnNMCuqqbDrqZB4Sxa3UubgX9mG8iNKjhtns-YMCZ9ALJfMZcmFaw_snfvGZV5ncBak2slSyINrovf3inT_LhqfnHmj0ebq1UHWYz9BzelTuLhaj2lcWuLkOVZMpaH4e_ugbJPrG4UMg7oA.svg" alt="건강보험심사평가원" />
+              <img
+                src="https://i.namu.wiki/i/R_N0xwMThkuCQAslKfsLdqFoSF2ttJKMK-mnVsobvVcmoz4veeTB68__jVGU3hXfTQjeIHO1jhYTXsgXrBJpxu9vDU9GUJQL-EJ0LrOjdYOkzpPj9JiCet9WBR-BJAZyd8tABFJdatXqu07ssquy1w.svg"
+                alt="한국지능정보사회진흥원"
+              />
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>프로젝트 주관사</h4>
+            <div class="footer-logo-grid">
+              <img
+                src="https://i.namu.wiki/i/E0tXAc6MbfhfDXTpeXnVbQ7SS26o_9fD8LnHm4TvTe0x4oa6RaoCjQn2IFXZqZ3tlcyBTlW7Ykh3sEG5VAVmLRU9NzAFRvQX_oZfxM6jgxq-1L9CZnzfKVEjRSeyFvC2AAnnGg0P2AodoDwXFwJ37A.svg"
+                alt="Microsoft"
+              />
+              <img
+                src="https://i.namu.wiki/i/PjJY3CMATpwFcARifDO6xTtRsaB2sm7RRJqkvBW0UoDwXVr1qAvfr6PJwwg-O_E_rk8PrhCKJahyASUMFg0Nv6Uof3Shoh2wWWwXdwSEv-_XBgaylTbqnlhlJvFUlJpmF0qjfEK_Uxtq4cjCS46Xow.svg"
+                alt="고용노동부"
+              />
+              <img
+                src="https://i.namu.wiki/i/oPSZAoi0YyG-8MdsZaAg4Uwc40gfoYN0iR-SilNVFdJbxg4numAjqSV5S3sKiaVGwyiF421UvNe-Gwy7Js5AwtqAST9LtcXVeRVptXA8iVWcbcwgUoZ2f7kWlMmTzY4REP-HG7xGsWXQRO2he5kdCA.svg"
+                alt="대한상공회의소"
+              />
+              <img
+                src="{{ url_for('static', filename='as39cypet0.png') }}"
+                alt="Elixirr"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container footer-bottom">
+        <p>© Ai-bo 2025. All rights reserved.</p>
+        <ul>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Advertising Policy</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+    // 1. suggestion-buttons 안의 모든 버튼 선택
+    const suggestionButtons = document.querySelectorAll(".suggestion-buttons button");
+    const searchButton = document.querySelector(".search-button");
+    const searchInput = document.getElementById("search-input");
+
+    // 팝업 제어
+    const overlay = document.getElementById("guideOverlay");
+    document.getElementById("btnAgree").addEventListener("click", () => {
+        overlay.style.display = "none";
+    });
+    document.getElementById("btnDisagree").addEventListener("click", () => {
+      window.close();
+      window.location.href = "about:blank";
+    });
+
+    // 검색 기능 유지
+    searchButton.addEventListener("click", () => {
+      const q = encodeURIComponent(searchInput.value.trim());
+      if (q) window.location.href = `/chat?q=${q}`;
+    });
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const q = encodeURIComponent(searchInput.value.trim());
+        if (q) window.location.href = `/chat?q=${q}`;
+      }
+    });
+
+    suggestionButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        // 버튼 텍스트를 검색창에 넣기
+        searchInput.value = button.textContent;
+
+        // 검색 실행: 기존 검색 버튼 클릭 이벤트 재사용
+        searchButton.click();
+      });
+    });
+
+    const faqButtons = document.querySelectorAll(".faq-section a");
+
+faqButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    // 버튼 텍스트를 검색창에 넣기
+    searchInput.value = button.textContent;
+
+    // 검색 실행: 기존 검색 버튼 클릭 이벤트 재사용
+    searchButton.click();
+  });
+});
+// --- (강력 추천) 개선된 FAQ 토글 기능 스크립트 ---
+const faqToggleButton = document.getElementById('explore-faq');
+const faqSection = document.getElementById('faq-section');
+
+faqToggleButton.addEventListener('click', () => {
+  // 버튼의 화살표 아이콘 회전
+  faqToggleButton.classList.toggle('open');
+
+  // FAQ 섹션을 열고 닫기
+  if (faqSection.style.maxHeight) {
+    // 이미 열려있다면 (maxHeight 값이 있다면) 닫는다.
+    faqSection.style.maxHeight = null;
+    faqSection.classList.remove('open'); // 애니메이션을 위해 open 클래스 제거
+  } else {
+    // 닫혀있다면 내용의 실제 높이(scrollHeight)만큼 열어준다.
+    faqSection.classList.add('open'); // 애니메이션을 위해 open 클래스 추가
+    faqSection.style.maxHeight = faqSection.scrollHeight + "px";
+  }
+});
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,923 @@
+/* Import premium fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+/* Import beautiful Korean fonts */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+/* General Styles */
+:root {
+  /* Mind Cafe Homepage Color Palette */
+  --primary-color: #005e5b;
+  --secondary-color: #00bbba;
+  --accent-color: #54b886;
+  --text-color: #434343;
+  --light-text-color: #9f9f9f;
+  --border-color: #e1e1e1;
+  --bg-color: linear-gradient(135deg, #def0f2 0%, #e1e1e1 100%);
+  --section-bg-color: #def0f2;
+  --card-bg-color: rgba(255, 255, 255, 0.98);
+  --hover-color: #00bbba;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --gradient-primary: linear-gradient(135deg, #00bbba 0%, #005e5b 100%);
+  --gradient-secondary: linear-gradient(135deg, #00bbba 0%, #008989 100%);
+  --gradient-accent: linear-gradient(135deg, #54b886 0%, #008989 100%);
+}
+
+body {
+  font-family: "Pretendard", "Noto Sans KR", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  color: var(--text-color);
+  background: var(--bg-color);
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-family: "Pretendard", "Noto Serif KR", "Noto Sans KR", "Playfair Display",
+    serif;
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 40px;
+  color: var(--text-color);
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.8px;
+  line-height: 1.3;
+  word-spacing: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+/* Top Banner */
+.top-banner {
+  background: var(--gradient-secondary);
+  text-align: center;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+.top-banner p {
+  margin: 0;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* Header */
+.main-header {
+  padding: 25px 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.menu-icon:hover {
+  color: var(--secondary-color);
+  transform: scale(1.1);
+  background: rgba(103, 126, 234, 0.1);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 100px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  margin: 20px;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.hero-section .logo {
+  height: 150px;
+  margin-bottom: 5px;
+}
+
+.hero-section .tagline {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  max-width: 650px;
+  margin: 25px auto;
+  background: var(--card-bg-color);
+  border: 2px solid transparent;
+  border-radius: 60px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.search-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--gradient-accent);
+  border-radius: 60px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.search-container:hover::before {
+  opacity: 1;
+}
+
+.search-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.search-container input {
+  flex-grow: 1;
+  border: none;
+  padding: 18px 30px;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+.search-container input::placeholder {
+  color: var(--light-text-color);
+  font-weight: 400;
+}
+
+.search-button {
+  background: var(--gradient-secondary);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 187, 186, 0.4);
+}
+
+.search-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 187, 186, 0.6);
+}
+
+.suggestion-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.suggestion-buttons button {
+  background: var(--card-bg-color);
+  border: 2px solid transparent;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Pretendard", "Noto Sans KR", "Inter", sans-serif;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.3px;
+}
+
+.suggestion-buttons button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-accent);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.suggestion-buttons button:hover::before {
+  left: 0;
+}
+
+.suggestion-buttons button:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(84, 184, 134, 0.4);
+}
+
+.explore-more {
+  margin-top: 25px;
+  font-size: 15px;
+  color: var(--light-text-color);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.explore-more span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Partners Section */
+.partners-section {
+  padding: 0px 0;
+  background-color: #fff;
+  position: relative;
+}
+
+.partners-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23667eea' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.partners-section .container {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.partner-card {
+  flex: 1;
+  background: var(--card-bg-color);
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+}
+
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(84, 184, 134, 0.3);
+}
+
+.partner-card img {
+  height: 45px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover img {
+  transform: scale(1.1);
+}
+
+.partner-card p {
+  font-size: 16px;
+  color: var(--light-text-color);
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+  word-spacing: 1px;
+}
+
+/* Get App Section */
+.get-app-section {
+  padding: 60px 0;
+  background: var(--bg-color);
+}
+
+.get-app-section .container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.get-app-section .app-text {
+  flex: 1;
+}
+.get-app-section .app-image {
+  flex: 1;
+  max-width: 300px;
+}
+.get-app-section .section-title {
+  text-align: left;
+}
+
+.app-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.app-buttons a img {
+  height: 50px;
+}
+
+/* Trusted & Supported Sections */
+.trusted-by-section,
+.supported-by-section {
+  padding: 60px 0;
+  background-color: var(--section-bg-color);
+}
+
+.supported-by-section {
+  background-color: #fff;
+}
+.supported-by-section p {
+  text-align: center;
+  color: var(--light-text-color);
+  margin-top: -15px;
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.2px;
+}
+
+/* 1. 모든 .logo-grid에 적용될 기본 스타일 (supported-by-section에 적용됨) */
+.logo-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* 2. 애니메이션을 적용할 .trusted-by-section 관련 스타일 */
+.trusted-by-section .container {
+  overflow: hidden; /* 영역을 벗어나는 로고 숨김 */
+}
+
+.trusted-by-section .logo-grid {
+  justify-content: flex-start; /* 왼쪽부터 시작하도록 정렬 */
+  flex-wrap: nowrap; /* 줄바꿈 방지 */
+  animation: scroll 20s linear infinite; /* 애니메이션 적용 */
+}
+
+.logo-grid img {
+  height: 35px;
+  opacity: 0.7;
+}
+
+/* 3. 애니메이션 동작 정의 */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* 로고 그룹의 절반만큼 왼쪽으로 이동하여 무한 반복 효과 생성 */
+    transform: translateX(-50%);
+  }
+}
+/* Footer */
+.main-footer {
+  background-color: #fff;
+  padding: 0px 0 20px;
+  font-size: 14px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-bottom: 40px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-col h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: -0.3px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.footer-col p {
+  color: var(--light-text-color);
+  margin: 0 0 15px;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: var(--light-text-color);
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: var(--secondary-color);
+}
+
+.newsletter-form {
+  display: flex;
+}
+.newsletter-form input {
+  flex-grow: 1;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+}
+.newsletter-form button {
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--light-text-color);
+  font-size: 12px;
+}
+
+.footer-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+.footer-bottom ul li a {
+  color: var(--light-text-color);
+  transition: color 0.2s ease;
+}
+
+.footer-bottom ul li a:hover {
+  color: var(--secondary-color);
+}
+
+/* Footer 로고 그리드 스타일 */
+.footer-logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
+  justify-items: center;
+}
+
+.footer-logo-grid img {
+  height: 30px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-logo-grid img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 26px;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+  }
+  .partners-section .container,
+  .get-app-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .get-app-section .section-title {
+    text-align: center;
+  }
+  .app-buttons {
+    justify-content: center;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-grid .footer-col:first-child,
+  .footer-grid .footer-col:last-child {
+    grid-column: 1 / -1; /* Span full width */
+    text-align: center;
+  }
+  .logo {
+    margin: 0 auto 20px;
+  }
+  .newsletter-form {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* FAQ 섹션 스타일 (정리된 버전) */
+.faq-section {
+  max-width: 600px;
+  margin: 10px auto 0; /* 위쪽 여백 (원하는 만큼 조절) */
+  padding: 0 20px;
+
+  /* 애니메이션을 위한 속성 */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    visibility 0.5s;
+}
+
+/* JavaScript에 의해 .open 클래스가 추가되면 적용될 스타일 */
+.faq-section.open {
+  max-height: 200px; /* 콘텐츠가 들어갈 충분한 높이 */
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  visibility: visible;
+  opacity: 1;
+}
+
+.faq-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-section li {
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.faq-section li:last-child {
+  border-bottom: none; /* 마지막 항목의 밑줄 제거 */
+}
+
+.faq-section li a {
+  text-decoration: none;
+  color: #212529;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+
+.faq-section li a:hover {
+  text-decoration: underline;
+}
+/* FAQ 섹션을 기본적으로 숨김 처리 */
+.faq-section {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  /* max-height와 opacity 속성에 애니메이션 효과(0.5초) 적용 */
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    visibility 0.5s;
+}
+
+/* 'open' 클래스가 추가되었을 때 FAQ 섹션을 보이게 함 */
+.faq-section.open {
+  visibility: visible;
+  opacity: 1;
+  /* 펼쳐질 최대 높이. 내용보다 충분히 크게 설정 */
+  max-height: 200px;
+}
+
+/* 화살표 아이콘이 회전하는 애니메이션(0.3초) 적용 */
+#explore-faq .material-symbols-outlined {
+  font-size: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 'open' 클래스가 추가되었을 때 화살표 아이콘을 180도 회전 */
+#explore-faq.open .material-symbols-outlined {
+  transform: rotate(180deg);
+}
+
+/* 사용자별 맞춤형 추천 시스템 스타일 */
+.recommendation-system {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  background: var(--card-bg-color);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-system::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+}
+
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.recommendation-header h3 {
+  font-family: "Pretendard", "Noto Serif KR", "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+}
+
+.recommendation-header p {
+  color: var(--light-text-color);
+  font-size: 16px;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+}
+
+.recommendation-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Pretendard", "Noto Sans KR", "Inter", sans-serif;
+  color: var(--light-text-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: -0.3px;
+}
+
+.filter-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-secondary);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  left: 0;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 187, 186, 0.4);
+}
+
+/* 추천 배지 스타일 */
+.recommendation-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.3px;
+  z-index: 10;
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.recommendation-badge:not(.new):not(.trending):not(.recommended) {
+  background: var(--gradient-secondary);
+}
+
+.recommendation-badge.new {
+  background: var(--gradient-secondary);
+}
+
+.recommendation-badge.trending {
+  background: linear-gradient(135deg, #00bbba 0%, #008989 100%);
+}
+
+.recommendation-badge.recommended {
+  background: var(--gradient-accent);
+}
+
+/* 매칭도 스코어 스타일 */
+.match-score {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: rgba(84, 184, 134, 0.1);
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  border: 1px solid rgba(84, 184, 134, 0.2);
+  letter-spacing: -0.2px;
+}
+
+/* 필터링 애니메이션 */
+.partner-card[data-category] {
+  transition: all 0.5s ease;
+}
+
+.partner-card.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+.logo-container {
+  background: linear-gradient(
+    180deg,
+    #e0f7fa,
+    #ffffff
+  ); /* 웹 배경과 동일한 색 */
+  border-radius: 10px; /* 둥글게 */
+  padding: 10px;
+}
+/* 안내 팝업 오버레이 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.modal h2 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+.modal p {
+  font-size: 14px;
+  margin: 12px 0;
+  line-height: 1.4;
+  color: #333;
+}
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.modal-buttons button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-disagree {
+  background: #f0f0f0;
+  color: #555;
+}
+.btn-agree {
+  background: #00bbba;
+  color: #fff;
+}

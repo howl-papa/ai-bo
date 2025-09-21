@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>타이핑 효과 예제</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .search-container {
+        position: relative;
+        width: 500px;
+      }
+      textarea {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+        resize: none; /* 사용자가 크기를 조절할 수 없게 함 */
+        height: 50px; /* 초기 높이 */
+      }
+      textarea:focus {
+        outline: none;
+        border-color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <textarea id="search-input" rows="1"></textarea>
+    </div>
+
+    <script>
+      const searchInput = document.getElementById("search-input");
+
+      // 여기에 보여주고 싶은 문구들을 배열로 추가하세요.
+      const phrases = [
+        "What is the dosing for methotrexate?",
+        "Normal pap HPV 16, what is the work up?",
+        "Indication for high dose atorvastatin",
+        "What are the side effects of lisinopril?",
+      ];
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      const typingSpeed = 100; // 타이핑 속도 (ms)
+      const deletingSpeed = 50; // 삭제 속도 (ms)
+      const delayBetweenPhrases = 2000; // 다음 문구로 넘어가기 전 딜레이 (ms)
+
+      function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+          // 글자 삭제
+          charIndex--;
+          searchInput.placeholder = currentPhrase.substring(0, charIndex);
+        } else {
+          // 글자 타이핑
+          charIndex++;
+          searchInput.placeholder = currentPhrase.substring(0, charIndex);
+        }
+
+        // 타이핑/삭제 후 다음 동작 결정
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          // 타이핑 완료 -> 삭제 시작 (딜레이 후)
+          isDeleting = true;
+          setTimeout(typeEffect, delayBetweenPhrases);
+        } else if (isDeleting && charIndex === 0) {
+          // 삭제 완료 -> 다음 문구 타이핑 시작
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length; // 다음 문구로 (배열 끝에 도달하면 처음으로)
+          setTimeout(typeEffect, typingSpeed);
+        } else {
+          // 타이핑/삭제 계속 진행
+          const currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
+          setTimeout(typeEffect, currentSpeed);
+        }
+      }
+
+      // 페이지 로드 후 함수 실행
+      document.addEventListener("DOMContentLoaded", () => {
+        if (phrases.length) {
+          setTimeout(typeEffect, typingSpeed);
+        }
+      });
+    </script>
+  </body>
+</html>

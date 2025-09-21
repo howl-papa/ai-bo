@@ -1,0 +1,51 @@
+# Python 관련 기본 제외 항목
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 환경설정/IDE 관련
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 로그파일
+*.log
+app.log
+
+# .env와 같은 환경변수 파일 제외
+.env
+
+# 가상환경 폴더 (가상환경 이름에 맞게 수정)
+venv/
+env/
+.env/
+
+# macOS 관련 파일
+.DS_Store
+
+# 기타 빌드 파일 및 임시 파일
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+.env
+
+# Large file
+데이터 전처리/embedding/embedded_articles.csv
